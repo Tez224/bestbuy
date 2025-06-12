@@ -1,5 +1,36 @@
+"""
+This module defines the `Product` class representing a store product
+with attributes like `name`, `price`, and `quantity`.
+"""
+
+
 class Product:
+    """
+    Represents a product in a store.
+
+    Attributes:
+        name (str): The name of the product.
+        price (float): The price of the product. Must be a positive number.
+        quantity (int): The quantity of the product in stock. Must be a non-negative integer.
+        active (bool): Indicates whether the product is active in the store. Default is True.
+
+    Methods:
+        __init__: Initializes a new instance of the Product class,
+                    with validation for the attributes.
+    """
     def __init__(self, name, price, quantity):
+        """
+        Initializes a new product instance with the given details.
+
+        Parameters:
+            name (str): The name of the product. It cannot be empty.
+            price (float): The price of the product. It must be a non-negative number.
+            quantity (int): The quantity of the product.
+                            It must be a non-negative integer.
+
+        Raises:
+            ValueError: If any of the input values are invalid (empty name, negative price or quantity).
+        """
         if not name:
             raise ValueError("Name cannot be empty")
         if not isinstance(price, (int, float)) or price < 0:
