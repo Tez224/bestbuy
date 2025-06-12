@@ -57,7 +57,7 @@ class Product:
             total_price = quantity * self.price
             if self.quantity == 0:
                 self.active = False
-            return f"Price to pay for quantity of {quantity} item(s): {total_price}$"
+            return total_price
 
 bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
 mac = Product("MacBook Air M2", price=1450, quantity=100)
