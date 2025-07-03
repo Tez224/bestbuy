@@ -25,10 +25,10 @@ def start(store: Store):
             print("".join(f"\n{index + 1}. {item.show()}"
                           for index, item in enumerate(active_products)))
             print(10 * '-')
-        if choice == "2":
+        elif choice == "2":
             total_amount = store.get_total_quantity()
             print(f"\ntotal quantity in store: {total_amount}\n")
-        if choice == "3":
+        elif choice == "3":
             active_products = best_buy.get_all_products()
             print("".join(f"\n{index + 1}. {item.show()}"
                           for index, item in enumerate(active_products)))
@@ -41,7 +41,7 @@ def start(store: Store):
                 if product_input == "":
                     break
 
-                if (not product_input.isdigit() or int(product_input) < 1
+                elif (not product_input.isdigit() or int(product_input) < 1
                         or int(product_input) > len(active_products)):
                     print("Invalid product selection. Please try again.")
                     continue
@@ -53,7 +53,7 @@ def start(store: Store):
                 if amount_input == "":
                     break
 
-                if not amount_input.isdigit() or int(amount_input) <= 0:
+                elif not amount_input.isdigit() or int(amount_input) <= 0:
                     print("Invalid quantity. Please enter a positive number.")
                     continue
 
@@ -70,7 +70,7 @@ def start(store: Store):
             print(f"{10 * '*'}\nOrder made successfully!\n"
                   f"Total payment: {total_price}$\n")
 
-        if choice == "4":
+        elif choice == "4":
             print("Thank you for visiting the store!")
             break  # Exit the main menu loop
 
