@@ -27,7 +27,7 @@ def start(store: Store):
             print(10 * '-')
         if choice == "2":
             total_amount = store.get_total_quantity()
-            print(f"\n{total_amount}\n")
+            print(f"\ntotal quantity in store: {total_amount}\n")
         if choice == "3":
             active_products = best_buy.get_all_products()
             print("".join(f"\n{index + 1}. {item.show()}"

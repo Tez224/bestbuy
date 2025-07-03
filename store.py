@@ -48,7 +48,7 @@ class Store:
         total_quantity = 0
         for product in self.product_list:
             total_quantity += product.get_quantity()
-        return f"total quantity in store: {total_quantity}"
+        return total_quantity
 
 
     def get_all_products(self):
