@@ -67,4 +67,4 @@ class Store:
         total_price = 0
         for product, quantity in shopping_list:
             total_price += product.buy(quantity)
-        return f"total price: {total_price}"
+        return total_price
