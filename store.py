@@ -15,11 +15,23 @@ Classes:
 
 class Store:
     """
-    Represents a store with a collection of products.
+    This module defines the `Store` class, which represents a store
+    that holds and manages products.
+
+    It allows you to:
+    - Add products to the store.
+    - Remove products from the store.
+    - Retrieve all active products.
+    - Process orders and calculate total prices.
+
+    Classes:
+        Store: A class that represents a store with a list of
+        products and methods for managing them.
 
     Attributes:
         product_list (list): A list of products available in the store.
     """
+
     def __init__(self, product_list=None):
         """
         Initializes a Store instance with a list of products.
