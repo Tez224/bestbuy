@@ -50,10 +50,10 @@ class Product:
 
     def set_quantity(self, quantity):
         """ Sets quantity of product """
+        self.quantity = quantity
         if quantity == 0:
             self.active = False
         else:
-            self.quantity = quantity
             self.active = True
 
 
