@@ -34,7 +34,8 @@ def start(store: Store):
                           for index, item in enumerate(active_products)))
             print(10 * '-')
 
-            total_price = 0
+            shopping_list = []
+
             while True:
                 product_input = input("Please choose a product: ")
 
@@ -58,17 +59,21 @@ def start(store: Store):
                     continue
 
                 quantity = int(amount_input)
+                shopping_list.append((selected_product, quantity))
+                print(f"Added {quantity} {selected_product.name}(s) to your order.")
 
-                try:
-                    price = selected_product.buy(quantity)  # Call buy method on selected product
-                    total_price += price  # Add the price of this purchase to the total
-                    print(f"Added {quantity} {selected_product.name}(s) to your order. "
-                          f"Total: {price}$")
-                except Exception as e:
-                    print(f"Error: {e}")
+                if shopping_list:
+                    try:
+                        total_price = best_buy.order(shopping_list)
+                        print(f"{10 * '*'}\nOrder made successfully!\n"
+                              f"Total payment: {total_price}$\n")
+                    except Exception as e:
+                        print(f"Error processing Order: {e}")
+                else:
+                    print(f"No items ordered.")
 
-            print(f"{10 * '*'}\nOrder made successfully!\n"
-                  f"Total payment: {total_price}$\n")
+
+
 
         elif choice == "4":
             print("Thank you for visiting the store!")
