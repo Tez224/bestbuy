@@ -29,7 +29,8 @@ class Product:
                             It must be a non-negative integer.
 
         Raises:
-            ValueError: If any of the input values are invalid (empty name, negative price or quantity).
+            ValueError: If any of the input values are invalid
+            (empty name, negative price or quantity).
         """
         if not name:
             raise ValueError("Name cannot be empty")
@@ -83,9 +84,9 @@ class Product:
         if self.quantity < quantity:
             self.active = False
             raise Exception("Not enough items in store.")
-        else:
-            self.quantity -= quantity
-            total_price = quantity * self.price
-            if self.quantity == 0:
-                self.active = False
-            return total_price
+
+        self.quantity -= quantity
+        total_price = quantity * self.price
+        if self.quantity == 0:
+            self.active = False
+        return total_price

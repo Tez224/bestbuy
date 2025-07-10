@@ -63,7 +63,7 @@ def start(store: Store):
                     except Exception as e:
                         print(f"Error processing Order: {e}")
                 else:
-                    print(f"No items ordered.")
+                    print("No items ordered.")
 
         elif choice == "4":
             print("Thank you for visiting the store!")

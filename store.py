@@ -117,7 +117,8 @@ class Store:
         """
         Processes an order by calculating the total price for the products in the shopping list.
 
-        :param shopping_list: (list of tuples): A list where each item is a tuple (product, quantity)
+        :param shopping_list: (list of tuples): A list where each item
+                is a tuple (product, quantity)
         :return: str: A message with the total price for the order.
         """
         total_price = 0
