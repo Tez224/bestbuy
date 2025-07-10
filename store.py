@@ -39,19 +39,63 @@ class Store:
         Parameters:
             product_list (list): A list of products to be added to the store.
             Defaults to an empty list.
+        Raises:
+            TypeError: If product_list is not a list or None.
+            ValueError: If product_list contains non-Product objects.
         """
+        if product_list is not None and not isinstance(product_list, list):
+            raise TypeError("product_list must be a list or None")
+
         if product_list is None:
             product_list = []
+        else:
+            # Check all items are Product instances
+            from products import Product  # Import here to avoid circular imports
+            for product in product_list:
+                if not isinstance(product, Product):
+                    raise ValueError("All items in product_list must be Product instances")
+
         self.product_list = product_list
 
-
     def add_product(self, product):
-        """ Adds a product to the store. """
+        """
+        Adds a product to the store.
+
+        Parameters:
+            product (Product): The product to add to the store.
+
+        Raises:
+            TypeError: If product is not a Product instance.
+            ValueError: If product is already in the store.
+        """
+        from products import Product  # Import here to avoid circular imports
+        if not isinstance(product, Product):
+            raise TypeError("Can only add Product instances to the store")
+
+        if product in self.product_list:
+            raise ValueError("Product is already in the store")
+
         self.product_list.append(product)
 
 
     def remove_product(self, product):
-        """ Removes a product from the store. """
+        """
+        Removes a product from the store.
+
+        Parameters:
+            product (Product): The product to remove from the store.
+
+        Raises:
+            TypeError: If product is not a Product instance.
+            ValueError: If product is not found in the store.
+        """
+        from products import Product  # Import here to avoid circular imports
+        if not isinstance(product, Product):
+            raise TypeError("Can only remove Product instances from the store")
+
+        if product not in self.product_list:
+            raise ValueError("Product not found in store")
+
         self.product_list.remove(product)
 
 

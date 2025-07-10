@@ -1,13 +1,6 @@
 from store import Store
 from products import Product
 
-# setup initial stock of inventory
-product_list = [ Product("MacBook Air M2", price=1450, quantity=100),
-                 Product("Bose QuietComfort Earbuds", price=250, quantity=500),
-                 Product("Google Pixel 7", price=500, quantity=250)
-               ]
-best_buy = Store(product_list)
-
 def start(store: Store):
     """Function to start the store menu and handle user interaction."""
     while True:
@@ -21,7 +14,7 @@ def start(store: Store):
         choice = input("Please choose a number: ")
 
         if choice == "1":
-            active_products = best_buy.get_all_products()
+            active_products = store.get_all_products()
             print("".join(f"\n{index + 1}. {item.show()}"
                           for index, item in enumerate(active_products)))
             print(10 * '-')
@@ -29,7 +22,7 @@ def start(store: Store):
             total_amount = store.get_total_quantity()
             print(f"\ntotal quantity in store: {total_amount}\n")
         elif choice == "3":
-            active_products = best_buy.get_all_products()
+            active_products = store.get_all_products()
             print("".join(f"\n{index + 1}. {item.show()}"
                           for index, item in enumerate(active_products)))
             print(10 * '-')
@@ -42,7 +35,7 @@ def start(store: Store):
                 if product_input == "":
                     break
 
-                elif (not product_input.isdigit() or int(product_input) < 1
+                if (not product_input.isdigit() or int(product_input) < 1
                         or int(product_input) > len(active_products)):
                     print("Invalid product selection. Please try again.")
                     continue
@@ -54,7 +47,7 @@ def start(store: Store):
                 if amount_input == "":
                     break
 
-                elif not amount_input.isdigit() or int(amount_input) <= 0:
+                if not amount_input.isdigit() or int(amount_input) <= 0:
                     print("Invalid quantity. Please enter a positive number.")
                     continue
 
@@ -64,7 +57,7 @@ def start(store: Store):
 
                 if shopping_list:
                     try:
-                        total_price = best_buy.order(shopping_list)
+                        total_price = store.order(shopping_list)
                         print(f"{10 * '*'}\nOrder made successfully!\n"
                               f"Total payment: {total_price}$\n")
                     except Exception as e:
@@ -72,16 +65,21 @@ def start(store: Store):
                 else:
                     print(f"No items ordered.")
 
-
-
-
         elif choice == "4":
             print("Thank you for visiting the store!")
             break  # Exit the main menu loop
 
 
 def main():
-    """ main function"""
+    """Main function with initialized store and products"""
+    # Initialize products and store inside main()
+    product_list = [
+        Product("MacBook Air M2", price=1450, quantity=100),
+        Product("Bose QuietComfort Earbuds", price=250, quantity=500),
+        Product("Google Pixel 7", price=500, quantity=250)
+    ]
+    best_buy = Store(product_list)
+
     start(best_buy)
 
 
